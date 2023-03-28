@@ -11,8 +11,9 @@ namespace Large_Number_Calculator
     }
     internal class Program
     {
-        /*static int calc_operator(string user_input, int index_of_operator)
+        static int calc_operator(string user_input, int index_of_operator)
         {
+            var two_nums = return_numbers(user_input, index_of_operator);
             if (user_input[index_of_operator] == '*')
             {
 
@@ -30,7 +31,8 @@ namespace Large_Number_Calculator
             {
 
             }
-        } */
+            return -1;
+        }
 
         public static Tuple<int[], int[]> return_numbers(string user_input, int index_of_operator)
         {
@@ -78,12 +80,7 @@ namespace Large_Number_Calculator
             }
             Console.WriteLine();
             Console.WriteLine($"User inputted string {user_input} with the index of the operator {index_of_operator}");
-            var two_nums = return_numbers(user_input, index_of_operator);
-
-            foreach (char c in two_nums.Item2)
-            {
-                Console.WriteLine(c);
-            }            
+            calc_operator(user_input, index_of_operator);
         }
     }
 }
