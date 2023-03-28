@@ -37,13 +37,19 @@ namespace Large_Number_Calculator
             List<int> reversed_num1 = new List<int>(); ;
             List<int> reversed_num2 = new List<int>();
 
-            for (int i=0; i<index_of_operator; i++)
+            for (int i= index_of_operator - 1; i >= 0; i--)
             {
-                reversed_num1.Append(user_input[i]);
+                reversed_num1.Add(user_input[i]);
+                // Console.WriteLine($"Appending: {user_input[i]}");
             }
-            for (int i = index_of_operator + 1; i < user_input.Length; i++)
+            /*foreach (var i in reversed_num1)
             {
-                reversed_num2.Append(user_input[i]);
+                Console.WriteLine($"i: {i}");
+            } */
+
+            for (int i = user_input.Length-1; i > index_of_operator; i--)
+            {
+                reversed_num2.Add(user_input[i]);
             }
 
             int[] array_num1 = reversed_num1.ToArray();
@@ -59,7 +65,7 @@ namespace Large_Number_Calculator
             var unseralized_input = Console.ReadLine();
             string user_input = Regex.Replace(unseralized_input, @"\s", "");
             var special_char = new Regex("^[a-zA-Z0-9 ]*$");
-            var index_of_operator = 0;
+            var index_of_operator = -1;
 
             for (var i=0; i<user_input.Length; i++)
             {
@@ -67,12 +73,14 @@ namespace Large_Number_Calculator
                 if (!special_char.IsMatch(user_input[i].ToString()) && user_input[i] != '.')
                 {
                     index_of_operator = i;
-                    Console.WriteLine(index_of_operator);
+                    Console.WriteLine($"\n {index_of_operator}");
                 }
             }
-
+            Console.WriteLine();
+            Console.WriteLine($"User inputted string {user_input} with the index of the operator {index_of_operator}");
             var two_nums = return_numbers(user_input, index_of_operator);
-            foreach (char c in two_nums.Item1)
+
+            foreach (char c in two_nums.Item2)
             {
                 Console.WriteLine(c);
             }            
